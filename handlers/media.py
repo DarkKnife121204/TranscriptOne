@@ -3,7 +3,7 @@ from aiogram.types import Message
 from config import Max_File_Size_MB, Max_Duration_Minutes
 
 from services.file import convert_file
-# from services.transcriber import transcribe
+from services.transcriber import transcribe
 
 Supported_types ={
     "audio/mpeg",
@@ -43,9 +43,8 @@ async def media_handler(message: Message):
 
     try:
         local_wav = await convert_file(file, message.bot)
-        # text = await trancrible(local_wav)
+        text = transcribe(local_wav)
 
-        text = "Какой-то текст"
 
         if text.strip():
             await message.answer(text)
