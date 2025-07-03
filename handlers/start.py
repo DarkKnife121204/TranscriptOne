@@ -2,8 +2,8 @@ from aiogram import Router
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 
-router = Router()
-@router.message(CommandStart())
+start_route = Router()
+@start_route.message(CommandStart())
 async def start(message: Message):
     await message.answer(
         "<b>Я бот для расшифровки аудио и видео файлов в текст.</b>\n\n"
