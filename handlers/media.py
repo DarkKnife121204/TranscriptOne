@@ -2,6 +2,20 @@ from aiogram import Router, F
 from aiogram.types import Message
 from config import Max_File_Size_MB, Max_Duration_Minutes
 
+from services.file import convert_file
+# from services.transcriber import transcribe
+
+Supported_types ={
+    "audio/mpeg",
+    "audio/x-wav",
+    "audio/wav",
+    "audio/ogg",
+    "audio/mp4",
+    "video/mp4",
+    "video/quicktime",
+    "video/x-msvideo"
+}
+
 media_route = Router()
 
 
@@ -15,13 +29,21 @@ async def media_handler(message: Message):
 
     if file.file_size > Max_File_Size_MB * 1024 * 1024:
         await message.answer("Файл слишком большой.")
+        return
 
     if file.duration > Max_Duration_Minutes * 60:
         await message.answer("Файл слишком долгий.")
+        return
+
+    if file.mime_type not in Supported_types:
+        await message.answer("Неверный тип файла.")
+        return
 
     await message.answer("Файл получен. Начинаю обработку...")
 
     try:
+        local_wav = await convert_file(file, message.bot)
+        # text = await trancrible(local_wav)
 
         text = "Какой-то текст"
 
