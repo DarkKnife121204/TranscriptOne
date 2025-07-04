@@ -22,7 +22,7 @@
 
 ```bash
 git clone https://github.com/yourusername/transcriber-bot.git
-cd transcriber-bot
+cd TranscriptOne
 docker build -t transcriber-bot .
 docker run --name transcriber-bot-container transcriber-bot
 ```
