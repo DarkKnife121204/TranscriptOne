@@ -21,7 +21,7 @@
 Перед установкой и запуском требуется запущенный Docker
 
 ```bash
-git clone https://github.com/yourusername/transcriber-bot.git
+git clone https://github.com/DarkKnife121204/TranscriptOne
 cd TranscriptOne
 docker build -t transcriber-bot .
 docker run --name transcriber-bot-container transcriber-bot
