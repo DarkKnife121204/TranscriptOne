@@ -5,6 +5,9 @@ from aiogram import Bot
 from aiogram.types import File as TgFile
 from config import TEMP_DIR
 
+
+os.makedirs("temp", exist_ok=True)
+
 async def convert_file(file, bot: Bot):
     tg_file: TgFile = await bot.get_file(file.file_id)
 
